@@ -194,7 +194,12 @@ function App() {
                 Demonstração do Stack Sender Pro
               </h3>
               <div className="aspect-video w-full bg-[#12141c] rounded-2xl border border-white/10 overflow-hidden relative group">
-                <VideoPlayer src="/videos/Apresentacao_Stack_sender.mp4" poster="/videos/poster-sender.jpg" />
+                <VideoPlayer 
+                  youtubeId="VYc1L4KcLsU"
+                  poster="/videos/poster-sender.jpg" 
+                  productName="stack_sender_pro"
+                  title="Demonstração do Stack Sender Pro"
+                />
               </div>
             </div>
 
@@ -315,17 +320,57 @@ function App() {
   );
 }
 
-function VideoPlayer({ src, poster }: { src: string, poster: string }) {
+function VideoPlayer({ src, poster, youtubeId, productName, title }: { src?: string, poster: string, youtubeId?: string, productName?: string, title?: string }) {
   const [isPlaying, setIsPlaying] = useState(false);
+
+  const handlePlay = () => {
+    setIsPlaying(true);
+    if (productName && youtubeId) {
+      // Registrar evento de analytics (se houver ferramenta configurada globalmente)
+      if (typeof window !== 'undefined' && 'gtag' in window) {
+        // Exemplo genérico de gtag
+        (window as any).gtag('event', 'video_play_click', {
+          product: productName,
+          provider: 'youtube',
+          video_id: youtubeId
+        });
+      } else {
+        console.log(`Analytics Event: video_play_click | product: ${productName} | provider: youtube`);
+      }
+    }
+  };
 
   if (!isPlaying) {
     return (
-      <div className="absolute inset-0 flex items-center justify-center bg-[#1a1c29] group-hover:bg-[#232635] transition-colors cursor-pointer" onClick={() => setIsPlaying(true)}>
+      <div className="absolute inset-0 flex items-center justify-center bg-[#1a1c29] group-hover:bg-[#232635] transition-colors cursor-pointer" onClick={handlePlay}>
         <div className="absolute inset-0 bg-cover bg-center opacity-40 mix-blend-overlay" style={{ backgroundImage: `url(${poster})` }} />
-        <div className="w-16 h-16 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center group-hover:scale-110 transition-transform z-10">
-          <Play className="w-6 h-6 text-white ml-1" />
+        
+        {/* Camada adicional de escurecimento para dar contraste premium */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/40" />
+
+        <div className="relative z-10 flex flex-col items-center gap-4">
+          <div className="w-20 h-20 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center group-hover:scale-110 group-hover:bg-orange-500/20 transition-all shadow-2xl">
+            <Play className="w-8 h-8 text-white ml-1 drop-shadow-lg" />
+          </div>
+          {title && (
+            <div className="text-white font-medium text-lg drop-shadow-md tracking-wide hidden md:block">
+              Assista à demonstração do sistema
+            </div>
+          )}
         </div>
       </div>
+    );
+  }
+
+  if (youtubeId) {
+    return (
+      <iframe
+        className="w-full h-full border-0"
+        src={`https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&rel=0`}
+        title={title || "YouTube video player"}
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowFullScreen
+      ></iframe>
     );
   }
 
