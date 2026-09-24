@@ -199,6 +199,7 @@ function App() {
                   poster="/videos/poster-sender.jpg" 
                   productName="stack_sender_pro"
                   title="Demonstração do Stack Sender Pro"
+                  hoverColorClass="group-hover:bg-orange-500/20"
                 />
               </div>
             </div>
@@ -210,7 +211,13 @@ function App() {
                 Demonstração do Stack SaaS
               </h3>
               <div className="aspect-video w-full bg-[#12141c] rounded-2xl border border-white/10 overflow-hidden relative group">
-                <VideoPlayer src="/videos/Video_2_Voz_Hacker_G-ADS.mp4" poster="/videos/poster-saas.jpg" />
+                <VideoPlayer 
+                  youtubeId="wZQEP1Y6FKc"
+                  poster="/videos/poster-saas.jpg" 
+                  productName="stack_saas"
+                  title="Conheça a plataforma por dentro"
+                  hoverColorClass="group-hover:bg-emerald-500/20"
+                />
               </div>
             </div>
 
@@ -221,7 +228,11 @@ function App() {
                 Demonstração do Stack IA
               </h3>
               <div className="aspect-video w-full bg-[#12141c] rounded-2xl border border-white/10 overflow-hidden relative group">
-                <VideoPlayer src="/videos/Video_3_Voz_Hacker_G-ADS.mp4" poster="/videos/poster-ia.jpg" />
+                <VideoPlayer 
+                  src="/videos/Video_3_Voz_Hacker_G-ADS.mp4" 
+                  poster="/videos/poster-ia.jpg"
+                  hoverColorClass="group-hover:bg-blue-500/20" 
+                />
               </div>
             </div>
           </div>
@@ -320,7 +331,7 @@ function App() {
   );
 }
 
-function VideoPlayer({ src, poster, youtubeId, productName, title }: { src?: string, poster: string, youtubeId?: string, productName?: string, title?: string }) {
+function VideoPlayer({ src, poster, youtubeId, productName, title, hoverColorClass = "group-hover:bg-white/20" }: { src?: string, poster: string, youtubeId?: string, productName?: string, title?: string, hoverColorClass?: string }) {
   const [isPlaying, setIsPlaying] = useState(false);
 
   const handlePlay = () => {
@@ -349,7 +360,7 @@ function VideoPlayer({ src, poster, youtubeId, productName, title }: { src?: str
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/40" />
 
         <div className="relative z-10 flex flex-col items-center gap-4">
-          <div className="w-20 h-20 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center group-hover:scale-110 group-hover:bg-orange-500/20 transition-all shadow-2xl">
+          <div className={`w-20 h-20 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center group-hover:scale-110 transition-all shadow-2xl ${hoverColorClass}`}>
             <Play className="w-8 h-8 text-white ml-1 drop-shadow-lg" />
           </div>
           {title && (
