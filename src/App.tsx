@@ -1,6 +1,15 @@
 import { useState } from 'react';
 import { Play, CheckCircle2, ChevronDown, MonitorPlay, BarChart, Users, ChevronRight, MessageSquare, PlayCircle } from 'lucide-react';
 
+// ─── Configuração centralizada de vídeos ─────────────────────────────────────
+// Para trocar um ID do YouTube basta atualizar aqui.
+const VIDEOS = {
+  sender: { youtubeId: 'VYc1L4KcLsU' },
+  saas:   { youtubeId: 'wZQEP1Y6FKc' },
+  ia:     { youtubeId: 'ZvYPr50QeHk' }, // ⚠️ Ver nota de segurança no relatório
+} as const;
+// ─────────────────────────────────────────────────────────────────────────────
+
 const SENDER_COLOR = 'text-orange-500';
 const SENDER_BG = 'bg-orange-500';
 
@@ -195,7 +204,7 @@ function App() {
               </h3>
               <div className="aspect-video w-full bg-[#12141c] rounded-2xl border border-white/10 overflow-hidden relative group">
                 <VideoPlayer 
-                  youtubeId="VYc1L4KcLsU"
+                  youtubeId={VIDEOS.sender.youtubeId}
                   poster="/videos/poster-sender.jpg" 
                   productName="stack_sender_pro"
                   title="Demonstração do Stack Sender Pro"
@@ -212,7 +221,7 @@ function App() {
               </h3>
               <div className="aspect-video w-full bg-[#12141c] rounded-2xl border border-white/10 overflow-hidden relative group">
                 <VideoPlayer 
-                  youtubeId="wZQEP1Y6FKc"
+                  youtubeId={VIDEOS.saas.youtubeId}
                   poster="/videos/poster-saas.jpg" 
                   productName="stack_saas"
                   title="Conheça a plataforma por dentro"
@@ -229,8 +238,10 @@ function App() {
               </h3>
               <div className="aspect-video w-full bg-[#12141c] rounded-2xl border border-white/10 overflow-hidden relative group">
                 <VideoPlayer 
-                  src="/videos/Video_3_Voz_Hacker_G-ADS.mp4" 
+                  youtubeId={VIDEOS.ia.youtubeId}
                   poster="/videos/poster-ia.jpg"
+                  productName="stack_ia"
+                  title="Stack IA — atendimento com inteligência artificial"
                   hoverColorClass="group-hover:bg-blue-500/20" 
                 />
               </div>
