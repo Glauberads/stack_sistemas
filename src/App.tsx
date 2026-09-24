@@ -112,13 +112,10 @@ function App() {
           <div className="flex flex-col items-center justify-center gap-4">
             <button 
               onClick={handleJoinGroup}
-              className="btn-glow group relative inline-flex items-center justify-center gap-3 px-10 py-4 bg-white text-black font-bold rounded-xl overflow-hidden transition-all hover:scale-105 active:scale-95 text-base md:text-lg"
+              className="btn-primary group inline-flex items-center justify-center gap-3 px-10 py-4 text-base md:text-lg tracking-wide"
             >
-              <span className="relative z-10 flex items-center gap-2 tracking-wide">
-                QUERO ENTRAR NO GRUPO
-                <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-gray-100 to-white opacity-0 group-hover:opacity-100 transition-opacity" />
+              QUERO ENTRAR NO GRUPO
+              <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
             <span className="text-sm text-gray-500 flex items-center gap-1.5">
               <CheckCircle2 className="w-4 h-4 text-emerald-500/70" />
@@ -232,10 +229,10 @@ function App() {
           
           <button 
             onClick={handleJoinGroup}
-            className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-white/10 hover:bg-white/15 text-white font-medium rounded-lg border border-white/20 transition-all hover:scale-105 active:scale-95"
+            className="btn-ghost group inline-flex items-center justify-center gap-3 px-8 py-4 text-base tracking-wide"
           >
             QUERO CONHECER A REVENDA
-            <ChevronRight className="w-5 h-5" />
+            <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
       </section>
@@ -364,13 +361,10 @@ function App() {
           
           <button 
             onClick={handleJoinGroup}
-            className="group relative inline-flex items-center justify-center gap-3 px-10 py-5 bg-white text-black font-semibold rounded-lg overflow-hidden transition-all hover:scale-105 active:scale-95 text-lg"
+            className="btn-primary group inline-flex items-center justify-center gap-3 px-10 py-5 text-lg tracking-wide"
           >
-            <span className="relative z-10 flex items-center gap-2">
-              ENTRAR NO GRUPO DA STACK SISTEMAS
-              <ChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
-            </span>
-            <div className="absolute inset-0 bg-gradient-to-r from-gray-200 to-white opacity-0 group-hover:opacity-100 transition-opacity" />
+            ENTRAR NO GRUPO DA STACK SISTEMAS
+            <ChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
       </section>
@@ -380,7 +374,7 @@ function App() {
         <div className="max-w-sm mx-auto pointer-events-auto">
           <button 
             onClick={handleJoinGroup}
-            className="w-full py-4 bg-white/10 backdrop-blur-md border border-white/20 text-white font-medium rounded-xl shadow-2xl flex items-center justify-center gap-2 active:scale-95 transition-transform"
+            className="btn-float w-full py-4 text-white font-semibold text-base tracking-wide flex items-center justify-center gap-2"
           >
             ENTRAR NO GRUPO
             <ChevronRight className="w-5 h-5" />

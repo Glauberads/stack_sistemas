@@ -89,7 +89,97 @@ body {
   50%       { box-shadow: 0 0 0 8px rgba(16,185,129,0); }
 }
 
-/* Glowing CTA button */
+/* ─── PRIMARY CTA — branco com glow e bordas vivas ─── */
+.btn-primary {
+  position: relative;
+  background: #ffffff;
+  color: #000000;
+  font-weight: 700;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.15),
+    0 0 30px rgba(255,255,255,0.12),
+    0 0 70px rgba(255,255,255,0.04),
+    0 4px 20px rgba(0,0,0,0.4);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0) 100%);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+.btn-primary:hover {
+  transform: scale(1.04) translateY(-1px);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.3),
+    0 0 50px rgba(255,255,255,0.22),
+    0 0 100px rgba(255,255,255,0.08),
+    0 8px 30px rgba(0,0,0,0.5);
+}
+.btn-primary:hover::before {
+  transform: translateX(100%);
+}
+.btn-primary:active { transform: scale(0.97); }
+
+/* ─── GHOST CTA — borda luminosa animada ─── */
+.btn-ghost {
+  position: relative;
+  background: rgba(255,255,255,0.04);
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 14px;
+  overflow: hidden;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+/* Borda animada com gradiente giratório */
+.btn-ghost::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 14px;
+  padding: 1px;
+  background: linear-gradient(
+    120deg,
+    rgba(255,255,255,0.05) 0%,
+    rgba(255,255,255,0.25) 40%,
+    rgba(255,255,255,0.05) 80%
+  );
+  background-size: 200% 200%;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: border-spin 4s linear infinite;
+}
+@keyframes border-spin {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+.btn-ghost:hover {
+  background: rgba(255,255,255,0.08);
+  transform: scale(1.03) translateY(-1px);
+}
+.btn-ghost:active { transform: scale(0.97); }
+
+/* ─── FLOATING MOBILE CTA ─── */
+.btn-float {
+  background: rgba(15, 17, 28, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 16px;
+  box-shadow:
+    0 8px 32px rgba(0,0,0,0.6),
+    0 0 0 1px rgba(255,255,255,0.05) inset,
+    0 1px 0 rgba(255,255,255,0.1) inset;
+  transition: transform 0.15s ease;
+}
+.btn-float:active { transform: scale(0.96); }
+
+/* Legacy glow mantido para compatibilidade */
 .btn-glow {
   box-shadow: 0 0 30px rgba(255,255,255,0.15), 0 0 60px rgba(255,255,255,0.05);
   transition: box-shadow 0.3s ease, transform 0.2s ease;
