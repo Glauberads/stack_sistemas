@@ -36,39 +36,89 @@ function App() {
     <div className="min-h-screen bg-[#090a0f] text-gray-200 font-sans selection:bg-blue-500/30">
       
       {/* HEADER / HERO */}
-      <header className="relative pt-24 pb-20 lg:pt-32 lg:pb-28 overflow-hidden px-6">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#14161f] to-[#090a0f] -z-10" />
-        
-        {/* Subtle background glow */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-[400px] bg-blue-500/5 blur-[120px] -z-10 rounded-full" />
-        
-        <div className="max-w-5xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8 backdrop-blur-sm">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="text-sm font-medium tracking-wide text-gray-300">LANÇAMENTO • STACK SISTEMAS</span>
+      <header className="relative pt-24 pb-24 lg:pt-36 lg:pb-32 overflow-hidden px-6 scanline">
+        {/* Base dark gradient */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0d0f1a] via-[#090a0f] to-[#090a0f]" />
+
+        {/* Animated tech grid */}
+        <div className="absolute inset-0 hero-grid opacity-100" />
+
+        {/* Color orbs — produto 1: laranja */}
+        <div className="orb-orange absolute -top-20 -left-20 w-[500px] h-[500px] rounded-full bg-orange-500/20 blur-[120px]" />
+        {/* Color orbs — produto 2: verde */}
+        <div className="orb-green absolute top-10 right-0 w-[400px] h-[400px] rounded-full bg-emerald-500/15 blur-[100px]" />
+        {/* Color orbs — produto 3: azul */}
+        <div className="orb-blue absolute -bottom-10 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full bg-blue-600/20 blur-[130px]" />
+
+        {/* Horizontal beam sweep */}
+        <div className="beam-sweep absolute top-1/3 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+
+        {/* Corner accents */}
+        <div className="absolute top-0 left-0 w-48 h-48 corner-accent opacity-60" />
+        <div className="absolute bottom-0 right-0 w-48 h-48 rotate-180 corner-accent opacity-40" />
+
+        {/* Floating particles */}
+        {[
+          { left: '10%', delay: '0s',  dur: '7s',  top: '80%' },
+          { left: '25%', delay: '2s',  dur: '9s',  top: '90%' },
+          { left: '40%', delay: '4s',  dur: '6s',  top: '85%' },
+          { left: '60%', delay: '1s',  dur: '8s',  top: '75%' },
+          { left: '75%', delay: '3s',  dur: '10s', top: '88%' },
+          { left: '88%', delay: '5s',  dur: '7s',  top: '92%' },
+        ].map((p, i) => (
+          <span
+            key={i}
+            className="particle"
+            style={{ left: p.left, top: p.top, animationDelay: p.delay, animationDuration: p.dur }}
+          />
+        ))}
+
+        {/* Thin top border line */}
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+
+        {/* Content */}
+        <div className="relative z-10 max-w-5xl mx-auto text-center">
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-10 backdrop-blur-sm pulse-ring">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="text-sm font-semibold tracking-[0.2em] text-emerald-400 uppercase">Lançamento • Stack Sistemas</span>
           </div>
           
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-6 leading-[1.1]">
-            Três sistemas. <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-200 to-gray-500">
+          {/* Headline */}
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-4 leading-[1.08]">
+            <span className="text-white">Três sistemas.</span>
+            <br />
+            <span className="text-shimmer">
               Uma oportunidade para quem quer revender tecnologia.
             </span>
           </h1>
+
+          {/* Divider line */}
+          <div className="flex items-center justify-center gap-4 my-8">
+            <div className="h-px w-16 bg-gradient-to-r from-transparent to-orange-500/60" />
+            <div className="flex gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-orange-500" />
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+            </div>
+            <div className="h-px w-16 bg-gradient-to-l from-transparent to-blue-500/60" />
+          </div>
           
           <p className="text-lg md:text-xl text-gray-400 mb-10 max-w-3xl mx-auto leading-relaxed">
-            Conheça o <span className="text-white font-medium">Stack Sender Pro</span>, o <span className="text-white font-medium">Stack SaaS</span> e o <span className="text-white font-medium">Stack IA</span>. Entre no grupo oficial para acompanhar as demonstrações, as novidades da revenda e as informações sobre seu próprio painel de licenças.
+            Conheça o <span className="text-orange-400 font-semibold">Stack Sender Pro</span>, o <span className="text-emerald-400 font-semibold">Stack SaaS</span> e o <span className="text-blue-400 font-semibold">Stack IA</span>. Entre no grupo oficial para acompanhar as demonstrações, as novidades da revenda e as informações sobre seu próprio painel de licenças.
           </p>
           
-          <div className="flex flex-col items-center justify-center gap-3">
+          {/* CTA */}
+          <div className="flex flex-col items-center justify-center gap-4">
             <button 
               onClick={handleJoinGroup}
-              className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-white text-black font-semibold rounded-lg overflow-hidden transition-all hover:scale-105 active:scale-95"
+              className="btn-glow group relative inline-flex items-center justify-center gap-3 px-10 py-4 bg-white text-black font-bold rounded-xl overflow-hidden transition-all hover:scale-105 active:scale-95 text-base md:text-lg"
             >
-              <span className="relative z-10 flex items-center gap-2">
+              <span className="relative z-10 flex items-center gap-2 tracking-wide">
                 QUERO ENTRAR NO GRUPO
                 <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-gray-200 to-white opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute inset-0 bg-gradient-to-r from-gray-100 to-white opacity-0 group-hover:opacity-100 transition-opacity" />
             </button>
             <span className="text-sm text-gray-500 flex items-center gap-1.5">
               <CheckCircle2 className="w-4 h-4 text-emerald-500/70" />
@@ -76,6 +126,9 @@ function App() {
             </span>
           </div>
         </div>
+
+        {/* Bottom fade */}
+        <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-[#090a0f] to-transparent" />
       </header>
 
       {/* SYSTEMS SHOWCASE */}
